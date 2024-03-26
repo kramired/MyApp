@@ -1,0 +1,35 @@
+﻿@model List<App_MVC.Models.Posts>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Data</title>
+</head>
+<body>
+    <h1>Data from Database</h1>
+    <div>
+        @Html.Partial("_Search", Model)
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>UserID</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td>@item.OwnerUserId</td>
+                    <td>@item.Score</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

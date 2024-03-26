@@ -1,0 +1,24 @@
+﻿@model List<Posts>
+
+<h1>Search Results</h1>
+
+<form method="get" action="@Url.Action("Index", "Search")">
+    <input type="text" name="query" placeholder="Search..." value="@Request.QueryString["query"]" />
+    <input type="submit" value="Search" />
+</form>
+
+@foreach (var post in Model)
+{
+    <div>
+        <h2>@post.Title</h2>
+        <p>@(post.Body.Length > 140 ? post.Body.Substring(0, 140) + "..." : post.Body)</p>
+        <p>Total Votes: @post.VoteCount</p>
+        <p>Total Answers: @post.AnswerCount</p>
+        <!-- Display user information based on UserId -->
+    </div>
+}
+
+@if (Model.Count == 0)
+{
+    <p>No results found.</p>
+}
